@@ -1,4 +1,5 @@
 import 'dart:convert'; // Import necesario para decodificar JSON
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
@@ -81,6 +82,9 @@ class _TextSearchState extends State<TextSearch> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        if (kDebugMode) {
+                          print(_ciController.text);
+                        }
                         _fetchStudentData(_ciController.text);
                       }
                     },
